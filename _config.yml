@@ -1,0 +1,11 @@
+# The theme to use, with the exact version number
+remote_theme: pages-themes/minimal@v0.2.0
+
+# Plugins are required for the theme to work
+plugins:
+  - jekyll-remote-theme
+
+# --- Your Personal Info ---
+# This is where you can customize your site
+title: Kathan Mehta's AI Playground
+description: Exploring the frontiers of machine learning and having fun with data.
