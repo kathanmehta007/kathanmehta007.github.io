@@ -1,0 +1,17 @@
+---
+---
+
+// 1) pick your skin:
+@import "minimal-mistakes/skins/air";  
+
+// 2) load the core theme:
+@import "minimal-mistakes";            
+
+// 3) your custom rules:
+/* Hero CTA buttons */
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+/* … all of your existing custom.css rules … */

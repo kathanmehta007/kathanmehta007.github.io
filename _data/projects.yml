@@ -1,0 +1,96 @@
+# _data/projects.yml
+
+- name: Blockchain-based Voting System
+  dates: Apr 2020
+  details:
+    - Designed a proof-of-work protocol for voter authentication & block mining.
+    - Integrated proof-of-authority to securely store votes on-chain.
+    - Implemented AES/RSA hybrid encryption to verify users and encrypt ballots.
+
+- name: Distributed File System
+  dates: Mar 2020
+  details:
+    - Built REST APIs for file & directory operations across multiple storage servers.
+    - Maintained a hierarchical namespace on a central naming server.
+    - Implemented automatic replication to 3 servers to ensure 99.9% data availability.
+
+- name: Click-through-Rate Prediction Pipeline
+  dates: Feb 2020
+  details:
+    - One-hot-encoded categorical features and trained logistic regression for CTR.
+    - Evaluated using log-loss; reduced feature dimensionality via hashing trick, cutting memory by 40%.
+
+- name: Raft Consensus Algorithm
+  dates: Feb 2020
+  details:
+    - Implemented a Java-based replicated service that tolerates node failures with asynchronous RPC & multithreading.
+    - Ensured strong consistency by ordering logs on the leader node.
+
+- name: End-to-end Machine Learning Pipeline
+  dates: Jan 2020
+  details:
+    - Built a Spark MLlib pipeline for power plant data: ingestion, cleaning, modeling, tuning & evaluation.
+    - Applied linear regression, decision trees & random forests to predict energy output with 92% R².
+
+- name: Entity Resolution for Text Analysis
+  dates: Jan 2020
+  details:
+    - Cleaned Amazon–Google product datasets with bag-of-words & TF-IDF + cosine similarity.
+    - Linked duplicate records to create a unified cross-platform product catalog.
+
+- name: Image Colorization using CNNs
+  dates: Aug 2019 – Dec 2019
+  details:
+    - Developed encoder-decoder CNN combining local & global features to colorize grayscale images.
+    - Tuned architectures & hyperparameters to achieve 75% SSIM on benchmark datasets.
+
+- name: Motion Tracking
+  dates: Nov 2019
+  details:
+    - Implemented Lucas–Kanade optical flow for translational & affine motion.
+    - Enhanced speed with inverse composition & appearance basis techniques.
+
+- name: Speech-to-Text Translation
+  dates: Nov 2019
+  details:
+    - Built Listen-Attend-Spell model with pyramidal BiLSTM encoder + attention-based LSTM decoder.
+    - Used scheduled teacher forcing, Gumbel noise & beam search; achieved 11.57 test Levenshtein distance on WSJ.
+
+- name: Face Classification & Verification
+  dates: Oct 2019
+  details:
+    - Fine-tuned MobileNetV2 for face classification on mobile devices.
+    - Leveraged transfer learning embeddings & cosine similarity; AUC 93.3% on verification task.
+
+- name: 3D Point Cloud Reconstruction
+  dates: Sep 2019
+  details:
+    - Matched BRIEF keypoints in stereo pairs; used RANSAC + 8-point algorithm for fundamental matrix.
+    - Triangulated corresponding points to generate temple 3D point cloud.
+
+- name: American Sign Language Recognition
+  dates: May 2019 – Aug 2019
+  details:
+    - Trained a gesture recognition NN for ASL; achieved 87% accuracy on custom dataset.
+
+- name: Cache Coherence Simulator
+  dates: Apr 2019
+  details:
+    - Simulated LRU-based cache; reported hit/miss/eviction counts for memory traces.
+
+- name: Dynamic Heap Allocator
+  dates: Apr 2019
+  details:
+    - Designed 16-byte aligned malloc/calloc/realloc/free allocator with best-fit + first-fit policies.
+    - Reduced fragmentation by boundary coalescing & free-list management.
+
+- name: Braille Display & Android App for Visually Impaired
+  dates: May 2018 – Aug 2018
+  details:
+    - OCR-powered Braille display device; paired with Android app for real-time text translation.
+    - Won 1st prize at DJ Spark conference.
+
+- name: Hand-Gesture Controlled Robot
+  dates: Jan 2017 – May 2017
+  details:
+    - Built a palm-tilt controlled wheelchair prototype using hand-gesture sensors.

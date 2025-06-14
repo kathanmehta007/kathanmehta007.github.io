@@ -1,0 +1,23 @@
+# _data/skills.yml
+
+# Industry Knowledge
+- Machine Learning
+- Deep Learning
+- Computer Vision
+- Natural Language Processing
+- Remote Sensing & GIS
+- Biomedical Imaging
+- Distributed Systems
+- Consensus Algorithms
+
+# Tools & Technologies
+- Python
+- TensorFlow
+- PyTorch
+- Docker
+- AWS
+- Spark MLlib
+- Java
+- C/C++
+- MATLAB
+- Linux

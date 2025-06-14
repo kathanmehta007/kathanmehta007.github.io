@@ -1,0 +1,32 @@
+# _data/publications.yml
+
+- title: Ultrasound-based Tracking of Partially In-plane, Curved Needles
+  venue: 2021 IEEE 18th Int’l Symposium on Biomedical Imaging (ISBI)
+  date: May 25 2021
+  isbn: 978-1-6654-2947-4
+  authors:
+    - Kathan Mehta
+    - Other authors
+
+- title: Refreshable Braille Displays
+  venue: Int’l Journal of Computer Applications
+  date: Apr 1 2018
+  isbn: 973-93-80898-56-0
+  authors:
+    - Kathan Mehta
+    - Other authors
+
+- title: Hand Gesture Controlled Robot using 8051 Microcontroller
+  venue: Technofocus DJSCE
+  date: May 1 2017
+  issn: 2321-0532
+  authors:
+    - Kathan Mehta
+    - Other authors
+
+- title: Braille Display for Visually Impaired
+  venue: DJ Spark
+  isbn: 978-93-86724-75-5
+  authors:
+    - Kathan Mehta
+    - Other authors

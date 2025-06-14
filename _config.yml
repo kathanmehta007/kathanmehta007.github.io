@@ -1,11 +1,65 @@
-# The theme to use, with the exact version number
-remote_theme: pages-themes/minimal@v0.2.0
+#— _config.yml —#
+title: "Kathan Nilesh Mehta"
+email: "kathanmehta007@gmail.com"
+description: "AI Lead @ Satelytics | M.S. in ECE (CMU)"
+url: "https://kathanmehta007.github.io" # your production URL
+baseurl: ""                              # set to "" if deploying to github.io
 
-# Plugins are required for the theme to work
+theme: minimal-mistakes-jekyll
+
 plugins:
-  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-include-cache
 
-# --- Your Personal Info ---
-# This is where you can customize your site
-title: Kathan Mehta's AI Playground
-description: Exploring the frontiers of machine learning and having fun with data.
+# (optional extras)
+# markdown: kramdown
+# kramdown:
+#   input: GFM
+
+
+# Top-level nav
+nav:
+  - title: Home
+    url: /
+    icon: house
+  - title: About
+    url: /about/
+    icon: user
+  - title: Experience
+    url: /experience/
+    icon: suitcase
+  - title: Projects
+    url: /projects/
+    icon: code
+  - title: Publications
+    url: /publications/
+    icon: book
+  - title: Contact
+    url: /contact/
+    icon: mail
+
+author:
+  name: "Kathan Nilesh Mehta"
+  avatar: "/assets/images/avatar.jpg"    # add an avatar here if you like
+  bio: "AI Lead at Satelytics. Passionate about geospatial AI & ML."
+
+# Social links in header/footer
+social:
+  LinkedIn: "https://www.linkedin.com/in/mehta-kathan"
+  GitHub:   "https://github.com/kathanmehta007"
+  Email:    "mailto:kathanmehta007@gmail.com"
+
+# defaults for pages & posts
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "single"
+      comments: false
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "single"
+      author_profile: true

@@ -1,0 +1,50 @@
+# _data/experience.yml
+
+- company: Satelytics
+  location: United States
+  roles:
+    - title: AI Lead
+      dates: Dec 2022 – Present
+      details:
+        - Lead the planning, implementation and optimization of geospatial data processing workflows, delivering 30% faster throughput.
+        - Optimized AI models for rapid ingestion, processing, and delivery of satellite data with <10% manual intervention.
+        - Mentored a team of 4 engineers in deploying end-to-end ML pipelines on AWS.
+      tech:
+        - Python
+        - Machine Learning
+        - Deep Learning
+        - Computer Vision
+        - Remote Sensing
+        - AWS
+    - title: AI Engineer
+      dates: Dec 2020 – Nov 2022
+      details:
+        - Developed preprocessing workflows for multispectral & hyperspectral imagery from Pleiades, WorldView 3, Sentinel, Landsat, PlanetScope, SkySat, SAR.
+        - Automated algorithms for methane & leak detection, reducing false positives by 25%.
+        - Built stereo DSM/DTM pipelines for tree height & health analysis, supporting vegetation management.
+      tech:
+        - Python
+        - Geospatial Data Processing
+        - Docker
+        - Linux
+
+- company: Carnegie Mellon University
+  location: Pittsburgh, PA
+  roles:
+    - title: Graduate Research Assistant, Biomedical Image Guidance Lab
+      dates: Jan 2020 – Nov 2020
+      details:
+        - Researched needle-tip localization in ultrasound using classical & deep-learning methods, improving detection accuracy by 15%.
+        - Published novel speckle-tracking algorithms at ISBI 2021.
+      tech:
+        - MATLAB
+        - Deep Learning
+        - Computer Vision
+    - title: Graduate Research Assistant, Carnegie Mellon University
+      dates: May 2019 – Aug 2019
+      details:
+        - Developed a CNN to detect diabetic retinopathy in retinal scans, achieving 90% sensitivity.
+      tech:
+        - Python
+        - TensorFlow
+        - Medical Imaging
