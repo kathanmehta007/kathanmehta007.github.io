@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kathan Nilesh Mehta | AI, Space & Tech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #4F46E5, #EC4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-gray-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-xl font-bold tracking-tight gradient-text">Kathan Nilesh Mehta</a>
+                </div>
+                <nav class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#experience" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                        <a href="#projects" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#publications" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Publications</a>
+                        <a href="#skills" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                        <a href="#contact" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </nav>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#experience" class="text-gray-600 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                <a href="#projects" class="text-gray-600 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#publications" class="text-gray-600 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Publications</a>
+                <a href="#skills" class="text-gray-600 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="#contact" class="text-gray-600 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Hero Section -->
+            <section id="hero" class="text-center py-16 md:py-24">
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-4">
+                    <span class="block">Exploring the Frontiers of</span>
+                    <span class="block gradient-text mt-2">AI, Space, and Technology</span>
+                </h1>
+                <div class="max-w-3xl mx-auto">
+                    <p class="text-lg md:text-xl text-gray-600 mt-6">
+                        I'm Kathan Mehta, a Machine Learning expert and proud alumnus of Carnegie Mellon University. By day, I serve as the AI Lead at Satelytics, architecting and deploying cutting-edge AI for geospatial data analysis. I'm passionate about leveraging technology to create practical, impactful solutions and am always eager to connect with fellow innovators.
+                    </p>
+                </div>
+                <div class="mt-8 flex justify-center items-center space-x-2">
+                    <a href="https://github.com/kathanmehta007" target="_blank" class="text-gray-500 hover:text-indigo-600 p-2 rounded-full transition-colors duration-300">
+                        <span class="sr-only">GitHub</span>
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/kathan-mehta" target="_blank" class="text-gray-500 hover:text-indigo-600 p-2 rounded-full transition-colors duration-300">
+                        <span class="sr-only">LinkedIn</span>
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+                    </a>
+                     <a href="https://x.com/kathanmehta" target="_blank" class="text-gray-500 hover:text-indigo-600 p-2 rounded-full transition-colors duration-300">
+                        <span class="sr-only">X</span>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                    </a>
+                    <a href="https://www.instagram.com/kathanmehta007/" target="_blank" class="text-gray-500 hover:text-indigo-600 p-2 rounded-full transition-colors duration-300">
+                        <span class="sr-only">Instagram</span>
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.645-.07-4.85s.012-3.584.07-4.85c.148-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072c-4.358.2-6.78 2.618-6.98 6.98C.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98C23.986 15.667 24 15.259 24 12s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z" clip-rule="evenodd"></path></svg>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience" class="py-16 md:py-24 border-t border-gray-200">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Professional Experience</h2>
+                <div class="max-w-4xl mx-auto space-y-12">
+                    <!-- Satelytics -->
+                    <div class="p-8 bg-white rounded-lg border border-gray-200 shadow-sm">
+                        <h3 class="text-2xl font-bold">Satelytics</h3>
+                        <div class="mt-6 space-y-8">
+                            <div>
+                                <h4 class="text-xl font-semibold">AI Lead</h4>
+                                <p class="text-sm text-gray-500 mb-2">Dec 2022 - Present</p>
+                                <ul class="list-disc list-outside ml-5 space-y-2 text-gray-700">
+                                    <li>Leading end-to-end strategy for AI projects, overseeing planning, implementation, deployment, and continuous optimization of geospatial data processing workflows.</li>
+                                    <li>Driving a 30% improvement in model efficiency through advanced optimization techniques, enabling rapid data ingestion, processing, and delivery with minimal human intervention.</li>
+                                    <li>Mentoring a team of AI engineers, fostering a culture of innovation and technical excellence.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold">AI Engineer</h4>
+                                <p class="text-sm text-gray-500 mb-2">Dec 2020 - Nov 2022</p>
+                                <ul class="list-disc list-outside ml-5 space-y-2 text-gray-700">
+                                    <li>Developed and optimized preprocessing workflows for diverse satellite imagery, including monochromatic, multispectral, and hyperspectral data from platforms like Pleiades, WorldView, Sentinel, and PlanetScope.</li>
+                                    <li>Pioneered the development and automation of key geospatial algorithms for Methane Detection, Leak Detection, and identification of Invasive Grasses, improving detection accuracy by over 25%.</li>
+                                    <li>Engineered stereo DSM/DTM workflows for advanced tree height detection, health analysis, and comprehensive vegetation management solutions.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- CMU Research -->
+                    <div class="p-8 bg-white rounded-lg border border-gray-200 shadow-sm">
+                         <h3 class="text-2xl font-bold">Carnegie Mellon University</h3>
+                         <div class="mt-6">
+                            <h4 class="text-xl font-semibold">Graduate Research Assistant - Biomedical Image Guidance Lab</h4>
+                            <p class="text-sm text-gray-500 mb-2">Jan 2020 - Nov 2020</p>
+                            <ul class="list-disc list-outside ml-5 space-y-2 text-gray-700">
+                               <li>Led a research project on needle tip localization in Ultrasound images, applying both classical computer vision and novel Deep Learning approaches to track needle paths and speckle patterns.</li>
+                               <li>Contributed to the paper "Ultrasound-Based Tracking Of Partially In-Plane, Curved Needles," published in the 2021 IEEE International Symposium on Biomedical Imaging (ISBI).</li>
+                               <li>Developed a Deep Learning algorithm for detecting signs of Diabetic Retinopathy in retinal fundus images, contributing to early-stage disease identification research.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Education Section -->
+            <section id="education" class="py-16 md:py-24 bg-white rounded-2xl shadow-sm border border-gray-200">
+                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Education</h2>
+                 <div class="max-w-4xl mx-auto space-y-8">
+                    <div class="flex items-center gap-6">
+                        <div class="flex-shrink-0 h-16 w-16 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center text-2xl font-bold">CMU</div>
+                        <div>
+                            <h3 class="text-xl font-bold">Carnegie Mellon University</h3>
+                            <p class="text-gray-700">Master of Science - MS, Electrical & Computer Engineering</p>
+                            <p class="text-gray-500 text-sm">2019 - 2020</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <div class="flex-shrink-0 h-16 w-16 bg-sky-100 text-sky-600 rounded-lg flex items-center justify-center text-2xl font-bold">UC</div>
+                        <div>
+                            <h3 class="text-xl font-bold">University of the Cumberlands</h3>
+                            <p class="text-gray-700">Master of Business Administration - MBA</p>
+                             <p class="text-gray-500 text-sm">2023 - 2024</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                         <div class="flex-shrink-0 h-16 w-16 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center text-2xl font-bold">DJS</div>
+                        <div>
+                            <h3 class="text-xl font-bold">Dwarkadas J. Sanghvi College of Engineering</h3>
+                            <p class="text-gray-700">Bachelor of Engineering - BE, Electrical, Electronic and Communications Engineering</p>
+                            <p class="text-gray-500 text-sm">2014 - 2018</p>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="py-16 md:py-24 border-t border-gray-200">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Featured Projects</h2>
+                <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Cards -->
+                    <div class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                        <h3 class="text-xl font-bold mb-2">Image Colorization using CNNs</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">Developed a CNN-based deep model combining low-level local features and high-level global features to colorize grayscale images, utilizing a U-Net style encoder-decoder architecture.</p>
+                        <a href="https://github.com/kathanmehta007" target="_blank" class="font-semibold text-indigo-600 hover:text-indigo-800 mt-auto">View on GitHub &rarr;</a>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                        <h3 class="text-xl font-bold mb-2">Speech to Text Translation</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">Designed a Listen-Attend-Spell model using a pyramidal BiLSTM encoder and attention-based LSTM decoder, achieving a 11.57 test Levenshtein distance on the WSJ dataset.</p>
+                        <a href="https://github.com/kathanmehta007" target="_blank" class="font-semibold text-indigo-600 hover:text-indigo-800 mt-auto">View on GitHub &rarr;</a>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                        <h3 class="text-xl font-bold mb-2">Face Classification and Verification</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">Built a CNN using MobileNetV2 for efficient face classification. Employed transfer learning to use embeddings for face verification, achieving 93.3% AUC on the test dataset.</p>
+                        <a href="https://github.com/kathanmehta007" target="_blank" class="font-semibold text-indigo-600 hover:text-indigo-800 mt-auto">View on GitHub &rarr;</a>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                        <h3 class="text-xl font-bold mb-2">Blockchain-based Voting System</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">Designed a secure voting system using a hybrid of Proof-of-Work for identity authentication and Proof-of-Authority for vote storage, secured with AES and RSA encryption.</p>
+                        <a href="https://github.com/kathanmehta007" target="_blank" class="font-semibold text-indigo-600 hover:text-indigo-800 mt-auto">View on GitHub &rarr;</a>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                        <h3 class="text-xl font-bold mb-2">Distributed File System</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">Built a global file system with REST APIs for client operations, maintaining a hierarchical view at the naming server and ensuring data durability through replication.</p>
+                        <a href="https://github.com/kathanmehta007" target="_blank" class="font-semibold text-indigo-600 hover:text-indigo-800 mt-auto">View on GitHub &rarr;</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                        <h3 class="text-xl font-bold mb-2">Braille Display for the Visually Impaired</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">Designed an award-winning (1st Prize, DJ Spark) Braille display system using OCR to mitigate communication barriers for the visually impaired.</p>
+                        <a href="https://github.com/kathanmehta007" target="_blank" class="font-semibold text-indigo-600 hover:text-indigo-800 mt-auto">View on GitHub &rarr;</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Publications Section -->
+            <section id="publications" class="py-16 md:py-24 bg-white rounded-2xl shadow-sm border border-gray-200">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Publications</h2>
+                <div class="max-w-4xl mx-auto space-y-8">
+                    <div class="p-6 bg-gray-50 rounded-lg border border-gray-200">
+                        <h3 class="font-semibold text-lg">Ultrasound-based Tracking of Partially In-plane, Curved Needles</h3>
+                        <p class="text-gray-600 mt-1">2021 IEEE 18th International Symposium on Biomedical Imaging (ISBI)</p>
+                        <a href="https://ieeexplore.ieee.org/document/9434079" target="_blank" class="text-indigo-600 hover:underline mt-2 inline-block">Read Publication &rarr;</a>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-lg border border-gray-200">
+                        <h3 class="font-semibold text-lg">Refreshable Braille Displays</h3>
+                        <p class="text-gray-600 mt-1">International Journal of Computer Applications</p>
+                        <a href="#" class="text-indigo-600 hover:underline mt-2 inline-block">Read Publication &rarr;</a>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-lg border border-gray-200">
+                        <h3 class="font-semibold text-lg">Hand Gesture Controlled Robot using 8051 Microcontroller</h3>
+                        <p class="text-gray-600 mt-1">Technofocus DJSCE</p>
+                        <a href="#" class="text-indigo-600 hover:underline mt-2 inline-block">Read Publication &rarr;</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="py-16 md:py-24 text-center border-t border-gray-200">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12">Technical Skills</h2>
+                <div class="max-w-5xl mx-auto">
+                    <div class="mb-8">
+                        <h3 class="text-lg font-semibold text-gray-600 mb-4 uppercase tracking-wider">Languages & Frameworks</h3>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="bg-indigo-100 text-indigo-800 text-base font-medium px-4 py-2 rounded-full">Python</span>
+                            <span class="bg-sky-100 text-sky-800 text-base font-medium px-4 py-2 rounded-full">PyTorch</span>
+                            <span class="bg-amber-100 text-amber-800 text-base font-medium px-4 py-2 rounded-full">TensorFlow</span>
+                            <span class="bg-emerald-100 text-emerald-800 text-base font-medium px-4 py-2 rounded-full">Scikit-learn</span>
+                            <span class="bg-rose-100 text-rose-800 text-base font-medium px-4 py-2 rounded-full">Keras</span>
+                            <span class="bg-gray-200 text-gray-800 text-base font-medium px-4 py-2 rounded-full">SQL</span>
+                            <span class="bg-gray-200 text-gray-800 text-base font-medium px-4 py-2 rounded-full">Java</span>
+                            <span class="bg-gray-200 text-gray-800 text-base font-medium px-4 py-2 rounded-full">C/C++</span>
+                        </div>
+                    </div>
+                     <div>
+                        <h3 class="text-lg font-semibold text-gray-600 mb-4 uppercase tracking-wider">Tools & Platforms</h3>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="bg-red-100 text-red-800 text-base font-medium px-4 py-2 rounded-full">AWS</span>
+                            <span class="bg-blue-100 text-blue-800 text-base font-medium px-4 py-2 rounded-full">Docker</span>
+                             <span class="bg-cyan-100 text-cyan-800 text-base font-medium px-4 py-2 rounded-full">Kubernetes</span>
+                            <span class="bg-purple-100 text-purple-800 text-base font-medium px-4 py-2 rounded-full">GIS</span>
+                            <span class="bg-teal-100 text-teal-800 text-base font-medium px-4 py-2 rounded-full">Remote Sensing</span>
+                            <span class="bg-pink-100 text-pink-800 text-base font-medium px-4 py-2 rounded-full">Git</span>
+                            <span class="bg-lime-100 text-lime-800 text-base font-medium px-4 py-2 rounded-full">MLflow</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-white border-t border-gray-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold">Get In Touch</h2>
+                <p class="mt-4 max-w-xl mx-auto text-lg text-gray-600">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Feel free to reach out.</p>
+                <a href="mailto:kathanmehta007@gmail.com" class="mt-8 inline-block bg-indigo-600 text-white font-semibold px-8 py-4 rounded-lg shadow-md hover:bg-indigo-700 transition-colors duration-300 text-lg">Say Hello</a>
+            </div>
+            <div class="mt-12 flex justify-center space-x-6">
+                <a href="https://linkedin.com/in/kathan-mehta" target="_blank" class="text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">LinkedIn</span>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+                </a>
+                <a href="https://github.com/kathanmehta007" target="_blank" class="text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">GitHub</span>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                </a>
+                 <a href="https://x.com/kathanmehta" target="_blank" class="text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">X</span>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="https://www.instagram.com/kathanmehta007/" target="_blank" class="text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">Instagram</span>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.645-.07-4.85s.012-3.584.07-4.85c.148-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072c-4.358.2-6.78 2.618-6.98 6.98C.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98C23.986 15.667 24 15.259 24 12s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z" clip-rule="evenodd"></path></svg>
+                </a>
+            </div>
+             <div class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-500">
+                <p>&copy; 2024 Kathan Nilesh Mehta. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when a link is clicked
+        const navLinks = document.querySelectorAll('#mobile-menu a, .md\\:block a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if(mobileMenu.contains(link)) {
+                    mobileMenu.classList.add('hidden');
+                }
+                const targetId = link.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
