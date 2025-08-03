@@ -10,8 +10,32 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-primary: #f9fafb;
+            --bg-secondary: #ffffff;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+            --card-bg: #ffffff;
+        }
+        
+        [data-theme="dark"] {
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --border-color: #374151;
+            --card-bg: #1f2937;
+        }
+        
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
         }
 
         .gradient-text {
@@ -20,13 +44,144 @@
             -webkit-text-fill-color: transparent;
             padding-bottom: 0.25rem; 
         }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .skill-bar {
+            background: var(--border-color);
+            border-radius: 9999px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #4F46E5, #EC4899);
+            border-radius: 9999px;
+            transition: width 2s ease-out;
+            position: relative;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .project-card {
+            perspective: 1000px;
+            height: 300px;
+        }
+        
+        .project-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        
+        .project-card:hover .project-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .project-card-front, .project-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, #4F46E5, #EC4899);
+            color: white;
+        }
+        
+        .dark-mode-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: var(--border-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .dark-mode-toggle::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        [data-theme="dark"] .dark-mode-toggle::before {
+            transform: translateX(30px);
+        }
+        
+        .typing-animation {
+            border-right: 3px solid;
+            border-color: #4F46E5;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { border-color: #4F46E5; }
+            51%, 100% { border-color: transparent; }
+        }
     </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body style="background-color: var(--bg-primary); color: var(--text-primary);">
 
     <!-- Header & Navigation -->
-    <header class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-gray-200">
+    <header class="backdrop-blur-lg fixed top-0 left-0 right-0 z-50" style="background-color: var(--bg-secondary); border-bottom: 1px solid var(--border-color);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex-shrink-0">
@@ -34,15 +189,17 @@
                 </div>
                 <nav class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#experience" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Experience</a>
-                        <a href="#projects" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-                        <a href="#publications" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Publications</a>
-                        <a href="#skills" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
-                        <a href="#contact" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                        <a href="#experience" class="hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" style="color: var(--text-secondary);">Experience</a>
+                        <a href="#projects" class="hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" style="color: var(--text-secondary);">Projects</a>
+                        <a href="#publications" class="hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" style="color: var(--text-secondary);">Publications</a>
+                        <a href="#skills" class="hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" style="color: var(--text-secondary);">Skills</a>
+                        <a href="#contact" class="hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" style="color: var(--text-secondary);">Contact</a>
+                        <div class="dark-mode-toggle ml-4" onclick="toggleDarkMode()" title="Toggle dark mode"></div>
                     </div>
                 </nav>
-                <div class="md:hidden">
-                    <button id="menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <div class="md:hidden flex items-center space-x-4">
+                    <div class="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle dark mode"></div>
+                    <button id="menu-btn" class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 transition-colors" style="color: var(--text-secondary); background-color: var(--bg-primary);">
                         <span class="sr-only">Open main menu</span>
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -52,13 +209,13 @@
             </div>
         </div>
         <!-- Mobile menu -->
-        <div class="md:hidden hidden" id="mobile-menu">
+        <div class="md:hidden hidden" id="mobile-menu" style="background-color: var(--bg-secondary);">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#experience" class="text-gray-600 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Experience</a>
-                <a href="#projects" class="text-gray-600 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Projects</a>
-                <a href="#publications" class="text-gray-600 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Publications</a>
-                <a href="#skills" class="text-gray-600 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Skills</a>
-                <a href="#contact" class="text-gray-600 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                <a href="#experience" class="hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors" style="color: var(--text-secondary);">Experience</a>
+                <a href="#projects" class="hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors" style="color: var(--text-secondary);">Projects</a>
+                <a href="#publications" class="hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors" style="color: var(--text-secondary);">Publications</a>
+                <a href="#skills" class="hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors" style="color: var(--text-secondary);">Skills</a>
+                <a href="#contact" class="hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors" style="color: var(--text-secondary);">Contact</a>
             </div>
         </div>
     </header>
@@ -67,49 +224,49 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Hero Section -->
-            <section id="hero" class="py-16 md:py-24">
+            <section id="hero" class="py-16 md:py-24 animate-fade-in">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div class="text-center lg:text-left">
+                    <div class="text-center lg:text-left animate-slide-up">
                         <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter leading-tight md:leading-tight">
                             <span class="block">Exploring the Frontiers of</span>
-                            <span class="block gradient-text mt-2">AI, Space, and Technology</span>
+                            <span class="block gradient-text mt-2 typing-animation" id="typing-text">AI, Space, and Technology</span>
                         </h1>
                         <div class="max-w-xl mx-auto lg:mx-0">
-                            <p class="text-lg md:text-xl text-gray-600 mt-8">
+                            <p class="text-lg md:text-xl mt-8" style="color: var(--text-secondary);">
                                 I'm Kathan Mehta, a Machine Learning expert and proud alumnus of Carnegie Mellon University. By day, I serve as the AI Lead at Satelytics, architecting and deploying cutting-edge AI for geospatial data analysis. I'm passionate about leveraging technology to create practical, impactful solutions and am always eager to connect with fellow innovators.
                             </p>
                         </div>
                         <div class="mt-8 flex justify-center lg:justify-start items-center space-x-2">
-                             <a href="https://github.com/kathanmehta007" target="_blank" class="text-gray-500 hover:text-indigo-600 p-2 rounded-full transition-colors duration-300">
+                             <a href="https://github.com/kathanmehta007" target="_blank" class="hover:text-indigo-600 p-2 rounded-full transition-colors duration-300 transform hover:scale-110" style="color: var(--text-secondary);">
                                 <span class="sr-only">GitHub</span>
                                 <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
                             </a>
-                            <a href="https://www.linkedin.com/in/mehta-kathan/" target="_blank" class="text-gray-500 hover:text-indigo-600 p-2 rounded-full transition-colors duration-300">
+                            <a href="https://www.linkedin.com/in/mehta-kathan/" target="_blank" class="hover:text-indigo-600 p-2 rounded-full transition-colors duration-300 transform hover:scale-110" style="color: var(--text-secondary);">
                                 <span class="sr-only">LinkedIn</span>
                                 <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
                             </a>
-                             <a href="https://x.com/kathanmehta" target="_blank" class="text-gray-500 hover:text-indigo-600 p-2 rounded-full transition-colors duration-300">
+                             <a href="https://x.com/kathanmehta" target="_blank" class="hover:text-indigo-600 p-2 rounded-full transition-colors duration-300 transform hover:scale-110" style="color: var(--text-secondary);">
                                 <span class="sr-only">X</span>
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
                             </a>
-                            <a href="https://www.instagram.com/kathanmehta007/" target="_blank" class="text-gray-500 hover:text-indigo-600 p-2 rounded-full transition-colors duration-300">
+                            <a href="https://www.instagram.com/kathanmehta007/" target="_blank" class="hover:text-indigo-600 p-2 rounded-full transition-colors duration-300 transform hover:scale-110" style="color: var(--text-secondary);">
                                 <span class="sr-only">Instagram</span>
                                 <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.645-.07-4.85s.012-3.584.07-4.85c.148-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072c-4.358.2-6.78 2.618-6.98 6.98C.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98C23.986 15.667 24 15.259 24 12s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z" clip-rule="evenodd"></path></svg>
                             </a>
                         </div>
                     </div>
                     <div class="flex justify-center lg:justify-end">
-                         <img class="h-64 w-64 md:h-80 md:w-80 rounded-full object-cover shadow-2xl" src="assets/profile.jpg" alt="Kathan Nilesh Mehta">
+                         <img class="h-64 w-64 md:h-80 md:w-80 rounded-full object-cover shadow-2xl animate-float transform hover:scale-105 transition-transform duration-300" src="assets/profile.jpg" alt="Kathan Nilesh Mehta">
                     </div>
                 </div>
             </section>
 
             <!-- Experience Section -->
-            <section id="experience" class="py-16 md:py-24 border-t border-gray-200">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Professional Experience</h2>
+            <section id="experience" class="py-16 md:py-24" style="border-top: 1px solid var(--border-color);">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-slide-up">Professional Experience</h2>
                 <div class="max-w-4xl mx-auto space-y-12">
                     <!-- Satelytics -->
-                    <div class="p-8 bg-white rounded-lg border border-gray-200 shadow-sm">
+                    <div class="p-8 rounded-lg shadow-sm transform hover:scale-105 transition-all duration-300 animate-slide-up" style="background-color: var(--card-bg); border: 1px solid var(--border-color);">
                         <h3 class="text-2xl font-bold">Satelytics</h3>
                         <div class="mt-6 space-y-8">
                             <div>
@@ -133,7 +290,7 @@
                         </div>
                     </div>
                      <!-- CMU Research -->
-                    <div class="p-8 bg-white rounded-lg border border-gray-200 shadow-sm">
+                    <div class="p-8 rounded-lg shadow-sm transform hover:scale-105 transition-all duration-300 animate-slide-up" style="background-color: var(--card-bg); border: 1px solid var(--border-color);">
                          <h3 class="text-2xl font-bold">Carnegie Mellon University</h3>
                          <div class="mt-6">
                             <h4 class="text-xl font-semibold">Graduate Research Assistant - Biomedical Image Guidance Lab</h4>
@@ -149,7 +306,7 @@
             </section>
             
             <!-- Education Section -->
-            <section id="education" class="py-16 md:py-24 bg-white rounded-2xl shadow-sm border border-gray-200">
+            <section id="education" class="py-16 md:py-24 rounded-2xl shadow-sm animate-slide-up" style="background-color: var(--card-bg); border: 1px solid var(--border-color);">
                  <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Education</h2>
                  <div class="max-w-4xl mx-auto space-y-8">
                     <div class="flex items-center gap-6">
@@ -180,58 +337,142 @@
             </section>
 
             <!-- Projects Section -->
-            <section id="projects" class="py-16 md:py-24 border-t border-gray-200">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Featured Projects</h2>
+            <section id="projects" class="py-16 md:py-24" style="border-top: 1px solid var(--border-color);">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-slide-up">Featured Projects</h2>
                 <div class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Project Cards -->
-                    <div class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                        <h3 class="text-xl font-bold mb-2">Image Colorization using CNNs</h3>
-                        <p class="text-gray-600 mb-4 flex-grow">Developed a CNN-based deep model combining low-level local features and high-level global features to colorize grayscale images, utilizing a U-Net style encoder-decoder architecture.</p>
-                        <a href="https://github.com/kathanmehta007" target="_blank" class="font-semibold text-indigo-600 hover:text-indigo-800 mt-auto">View on GitHub &rarr;</a>
+                    <div class="project-card">
+                        <div class="project-card-inner">
+                            <div class="project-card-front flex flex-col" style="background-color: var(--card-bg); border: 1px solid var(--border-color);">
+                                <h3 class="text-xl font-bold mb-2">Image Colorization using CNNs</h3>
+                                <p class="mb-4 flex-grow" style="color: var(--text-secondary);">Developed a CNN-based deep model combining low-level local features and high-level global features to colorize grayscale images.</p>
+                                <div class="text-sm" style="color: var(--text-secondary);">Hover to see details</div>
+                            </div>
+                            <div class="project-card-back">
+                                <h3 class="text-xl font-bold mb-4 text-white">Technical Details</h3>
+                                <ul class="text-sm space-y-2 flex-grow text-white">
+                                    <li>• U-Net encoder-decoder architecture</li>
+                                    <li>• Low-level + high-level feature fusion</li>
+                                    <li>• PyTorch implementation</li>
+                                    <li>• Custom loss functions</li>
+                                </ul>
+                                <a href="https://github.com/kathanmehta007" target="_blank" class="inline-block bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors mt-auto">View on GitHub &rarr;</a>
+                            </div>
+                        </div>
                     </div>
-                     <div class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                        <h3 class="text-xl font-bold mb-2">Speech to Text Translation</h3>
-                        <p class="text-gray-600 mb-4 flex-grow">Designed a Listen-Attend-Spell model using a pyramidal BiLSTM encoder and attention-based LSTM decoder, achieving a 11.57 test Levenshtein distance on the WSJ dataset.</p>
-                        <a href="https://github.com/kathanmehta007" target="_blank" class="font-semibold text-indigo-600 hover:text-indigo-800 mt-auto">View on GitHub &rarr;</a>
+                    <div class="project-card">
+                        <div class="project-card-inner">
+                            <div class="project-card-front flex flex-col" style="background-color: var(--card-bg); border: 1px solid var(--border-color);">
+                                <h3 class="text-xl font-bold mb-2">Speech to Text Translation</h3>
+                                <p class="mb-4 flex-grow" style="color: var(--text-secondary);">Listen-Attend-Spell model with pyramidal BiLSTM encoder and attention-based LSTM decoder.</p>
+                                <div class="text-sm" style="color: var(--text-secondary);">Hover to see details</div>
+                            </div>
+                            <div class="project-card-back">
+                                <h3 class="text-xl font-bold mb-4 text-white">Technical Details</h3>
+                                <ul class="text-sm space-y-2 flex-grow text-white">
+                                    <li>• Pyramidal BiLSTM encoder</li>
+                                    <li>• Attention-based LSTM decoder</li>
+                                    <li>• 11.57 Levenshtein distance on WSJ</li>
+                                    <li>• End-to-end speech recognition</li>
+                                </ul>
+                                <a href="https://github.com/kathanmehta007" target="_blank" class="inline-block bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors mt-auto">View on GitHub &rarr;</a>
+                            </div>
+                        </div>
                     </div>
-                     <div class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                        <h3 class="text-xl font-bold mb-2">Face Classification and Verification</h3>
-                        <p class="text-gray-600 mb-4 flex-grow">Built a CNN using MobileNetV2 for efficient face classification. Employed transfer learning to use embeddings for face verification, achieving 93.3% AUC on the test dataset.</p>
-                        <a href="https://github.com/kathanmehta007" target="_blank" class="font-semibold text-indigo-600 hover:text-indigo-800 mt-auto">View on GitHub &rarr;</a>
+                    <div class="project-card">
+                        <div class="project-card-inner">
+                            <div class="project-card-front flex flex-col" style="background-color: var(--card-bg); border: 1px solid var(--border-color);">
+                                <h3 class="text-xl font-bold mb-2">Face Classification and Verification</h3>
+                                <p class="mb-4 flex-grow" style="color: var(--text-secondary);">CNN using MobileNetV2 for efficient face classification with transfer learning.</p>
+                                <div class="text-sm" style="color: var(--text-secondary);">Hover to see details</div>
+                            </div>
+                            <div class="project-card-back">
+                                <h3 class="text-xl font-bold mb-4 text-white">Technical Details</h3>
+                                <ul class="text-sm space-y-2 flex-grow text-white">
+                                    <li>• MobileNetV2 architecture</li>
+                                    <li>• Transfer learning approach</li>
+                                    <li>• 93.3% AUC on test dataset</li>
+                                    <li>• Efficient face verification</li>
+                                </ul>
+                                <a href="https://github.com/kathanmehta007" target="_blank" class="inline-block bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors mt-auto">View on GitHub &rarr;</a>
+                            </div>
+                        </div>
                     </div>
-                     <div class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                        <h3 class="text-xl font-bold mb-2">Blockchain-based Voting System</h3>
-                        <p class="text-gray-600 mb-4 flex-grow">Designed a secure voting system using a hybrid of Proof-of-Work for identity authentication and Proof-of-Authority for vote storage, secured with AES and RSA encryption.</p>
-                        <a href="https://github.com/kathanmehta007" target="_blank" class="font-semibold text-indigo-600 hover:text-indigo-800 mt-auto">View on GitHub &rarr;</a>
+                    <div class="project-card">
+                        <div class="project-card-inner">
+                            <div class="project-card-front flex flex-col" style="background-color: var(--card-bg); border: 1px solid var(--border-color);">
+                                <h3 class="text-xl font-bold mb-2">Blockchain-based Voting System</h3>
+                                <p class="mb-4 flex-grow" style="color: var(--text-secondary);">Secure voting system using hybrid Proof-of-Work and Proof-of-Authority consensus.</p>
+                                <div class="text-sm" style="color: var(--text-secondary);">Hover to see details</div>
+                            </div>
+                            <div class="project-card-back">
+                                <h3 class="text-xl font-bold mb-4 text-white">Technical Details</h3>
+                                <ul class="text-sm space-y-2 flex-grow text-white">
+                                    <li>• Hybrid PoW + PoA consensus</li>
+                                    <li>• AES and RSA encryption</li>
+                                    <li>• Identity authentication system</li>
+                                    <li>• Secure vote storage</li>
+                                </ul>
+                                <a href="https://github.com/kathanmehta007" target="_blank" class="inline-block bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors mt-auto">View on GitHub &rarr;</a>
+                            </div>
+                        </div>
                     </div>
-                     <div class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                        <h3 class="text-xl font-bold mb-2">Distributed File System</h3>
-                        <p class="text-gray-600 mb-4 flex-grow">Built a global file system with REST APIs for client operations, maintaining a hierarchical view at the naming server and ensuring data durability through replication.</p>
-                        <a href="https://github.com/kathanmehta007" target="_blank" class="font-semibold text-indigo-600 hover:text-indigo-800 mt-auto">View on GitHub &rarr;</a>
+                    <div class="project-card">
+                        <div class="project-card-inner">
+                            <div class="project-card-front flex flex-col" style="background-color: var(--card-bg); border: 1px solid var(--border-color);">
+                                <h3 class="text-xl font-bold mb-2">Distributed File System</h3>
+                                <p class="mb-4 flex-grow" style="color: var(--text-secondary);">Global file system with REST APIs and hierarchical naming server architecture.</p>
+                                <div class="text-sm" style="color: var(--text-secondary);">Hover to see details</div>
+                            </div>
+                            <div class="project-card-back">
+                                <h3 class="text-xl font-bold mb-4 text-white">Technical Details</h3>
+                                <ul class="text-sm space-y-2 flex-grow text-white">
+                                    <li>• REST API architecture</li>
+                                    <li>• Hierarchical naming server</li>
+                                    <li>• Data replication for durability</li>
+                                    <li>• Global file system design</li>
+                                </ul>
+                                <a href="https://github.com/kathanmehta007" target="_blank" class="inline-block bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors mt-auto">View on GitHub &rarr;</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-col">
-                        <h3 class="text-xl font-bold mb-2">Braille Display for the Visually Impaired</h3>
-                        <p class="text-gray-600 mb-4 flex-grow">Designed an award-winning (1st Prize, DJ Spark) Braille display system using OCR to mitigate communication barriers for the visually impaired.</p>
-                        <a href="https://github.com/kathanmehta007" target="_blank" class="font-semibold text-indigo-600 hover:text-indigo-800 mt-auto">View on GitHub &rarr;</a>
+                    <div class="project-card">
+                        <div class="project-card-inner">
+                            <div class="project-card-front flex flex-col" style="background-color: var(--card-bg); border: 1px solid var(--border-color);">
+                                <h3 class="text-xl font-bold mb-2">Braille Display for the Visually Impaired</h3>
+                                <p class="mb-4 flex-grow" style="color: var(--text-secondary);">Award-winning Braille display system using OCR technology.</p>
+                                <div class="text-sm font-semibold text-yellow-600">🏆 1st Prize Winner</div>
+                            </div>
+                            <div class="project-card-back">
+                                <h3 class="text-xl font-bold mb-4 text-white">Technical Details</h3>
+                                <ul class="text-sm space-y-2 flex-grow text-white">
+                                    <li>• OCR integration</li>
+                                    <li>• Real-time text processing</li>
+                                    <li>• Tactile feedback system</li>
+                                    <li>• Accessibility-focused design</li>
+                                </ul>
+                                <a href="https://github.com/kathanmehta007" target="_blank" class="inline-block bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors mt-auto">View on GitHub &rarr;</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- Publications Section -->
-            <section id="publications" class="py-16 md:py-24 bg-white rounded-2xl shadow-sm border border-gray-200">
+            <section id="publications" class="py-16 md:py-24 rounded-2xl shadow-sm animate-slide-up" style="background-color: var(--card-bg); border: 1px solid var(--border-color);">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Publications</h2>
                 <div class="max-w-4xl mx-auto space-y-8">
-                    <div class="p-6 bg-gray-50 rounded-lg border border-gray-200">
+                    <div class="p-6 rounded-lg transform hover:scale-105 transition-all duration-300" style="background-color: var(--bg-primary); border: 1px solid var(--border-color);">
                         <h3 class="font-semibold text-lg">Ultrasound-based Tracking of Partially In-plane, Curved Needles</h3>
                         <p class="text-gray-600 mt-1">2021 IEEE 18th International Symposium on Biomedical Imaging (ISBI)</p>
                         <a href="https://ieeexplore.ieee.org/document/9434079" target="_blank" class="text-indigo-600 hover:underline mt-2 inline-block">Read Publication &rarr;</a>
                     </div>
-                    <div class="p-6 bg-gray-50 rounded-lg border border-gray-200">
+                    <div class="p-6 rounded-lg transform hover:scale-105 transition-all duration-300" style="background-color: var(--bg-primary); border: 1px solid var(--border-color);">
                         <h3 class="font-semibold text-lg">Refreshable Braille Displays</h3>
                         <p class="text-gray-600 mt-1">International Journal of Computer Applications</p>
                         <a href="#" class="text-indigo-600 hover:underline mt-2 inline-block">Read Publication &rarr;</a>
                     </div>
-                    <div class="p-6 bg-gray-50 rounded-lg border border-gray-200">
+                    <div class="p-6 rounded-lg transform hover:scale-105 transition-all duration-300" style="background-color: var(--bg-primary); border: 1px solid var(--border-color);">
                         <h3 class="font-semibold text-lg">Hand Gesture Controlled Robot using 8051 Microcontroller</h3>
                         <p class="text-gray-600 mt-1">Technofocus DJSCE</p>
                         <a href="#" class="text-indigo-600 hover:underline mt-2 inline-block">Read Publication &rarr;</a>
@@ -240,42 +481,84 @@
             </section>
 
             <!-- Skills Section -->
-            <section id="skills" class="py-16 md:py-24 text-center border-t border-gray-200">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12">Technical Skills</h2>
+            <section id="skills" class="py-16 md:py-24 text-center" style="border-top: 1px solid var(--border-color);">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-slide-up">Technical Skills</h2>
                 <div class="max-w-5xl mx-auto">
-                    <div class="mb-8">
-                        <h3 class="text-lg font-semibold text-gray-600 mb-4 uppercase tracking-wider">Languages & Frameworks</h3>
-                        <div class="flex flex-wrap justify-center gap-3">
-                            <span class="bg-indigo-100 text-indigo-800 text-base font-medium px-4 py-2 rounded-full">Python</span>
-                            <span class="bg-sky-100 text-sky-800 text-base font-medium px-4 py-2 rounded-full">PyTorch</span>
-                            <span class="bg-amber-100 text-amber-800 text-base font-medium px-4 py-2 rounded-full">TensorFlow</span>
-                            <span class="bg-emerald-100 text-emerald-800 text-base font-medium px-4 py-2 rounded-full">Scikit-learn</span>
-                            <span class="bg-rose-100 text-rose-800 text-base font-medium px-4 py-2 rounded-full">Keras</span>
-                            <span class="bg-gray-200 text-gray-800 text-base font-medium px-4 py-2 rounded-full">SQL</span>
-                            <span class="bg-gray-200 text-gray-800 text-base font-medium px-4 py-2 rounded-full">Java</span>
-                            <span class="bg-gray-200 text-gray-800 text-base font-medium px-4 py-2 rounded-full">C/C++</span>
+                    <div class="mb-12">
+                        <h3 class="text-lg font-semibold mb-8 uppercase tracking-wider" style="color: var(--text-secondary);">Core Technologies</h3>
+                        <div class="space-y-6 text-left max-w-3xl mx-auto">
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Python & Machine Learning</span>
+                                    <span class="font-medium">95%</span>
+                                </div>
+                                <div class="skill-bar h-3">
+                                    <div class="skill-progress" data-width="95" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">PyTorch & TensorFlow</span>
+                                    <span class="font-medium">90%</span>
+                                </div>
+                                <div class="skill-bar h-3">
+                                    <div class="skill-progress" data-width="90" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">AWS & Cloud Technologies</span>
+                                    <span class="font-medium">85%</span>
+                                </div>
+                                <div class="skill-bar h-3">
+                                    <div class="skill-progress" data-width="85" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Docker & Kubernetes</span>
+                                    <span class="font-medium">80%</span>
+                                </div>
+                                <div class="skill-bar h-3">
+                                    <div class="skill-progress" data-width="80" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">GIS & Remote Sensing</span>
+                                    <span class="font-medium">88%</span>
+                                </div>
+                                <div class="skill-bar h-3">
+                                    <div class="skill-progress" data-width="88" style="width: 0%;"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                      <div>
-                        <h3 class="text-lg font-semibold text-gray-600 mb-4 uppercase tracking-wider">Tools & Platforms</h3>
+                        <h3 class="text-lg font-semibold mb-4 uppercase tracking-wider" style="color: var(--text-secondary);">Technologies</h3>
                         <div class="flex flex-wrap justify-center gap-3">
-                            <span class="bg-red-100 text-red-800 text-base font-medium px-4 py-2 rounded-full">AWS</span>
-                            <span class="bg-blue-100 text-blue-800 text-base font-medium px-4 py-2 rounded-full">Docker</span>
-                             <span class="bg-cyan-100 text-cyan-800 text-base font-medium px-4 py-2 rounded-full">Kubernetes</span>
-                            <span class="bg-purple-100 text-purple-800 text-base font-medium px-4 py-2 rounded-full">GIS</span>
-                            <span class="bg-teal-100 text-teal-800 text-base font-medium px-4 py-2 rounded-full">Remote Sensing</span>
-                            <span class="bg-pink-100 text-pink-800 text-base font-medium px-4 py-2 rounded-full">Git</span>
-                            <span class="bg-lime-100 text-lime-800 text-base font-medium px-4 py-2 rounded-full">MLflow</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-base font-medium px-4 py-2 rounded-full transform hover:scale-110 transition-transform">Python</span>
+                            <span class="bg-sky-100 text-sky-800 text-base font-medium px-4 py-2 rounded-full transform hover:scale-110 transition-transform">PyTorch</span>
+                            <span class="bg-amber-100 text-amber-800 text-base font-medium px-4 py-2 rounded-full transform hover:scale-110 transition-transform">TensorFlow</span>
+                            <span class="bg-emerald-100 text-emerald-800 text-base font-medium px-4 py-2 rounded-full transform hover:scale-110 transition-transform">Scikit-learn</span>
+                            <span class="bg-rose-100 text-rose-800 text-base font-medium px-4 py-2 rounded-full transform hover:scale-110 transition-transform">Keras</span>
+                            <span class="bg-red-100 text-red-800 text-base font-medium px-4 py-2 rounded-full transform hover:scale-110 transition-transform">AWS</span>
+                            <span class="bg-blue-100 text-blue-800 text-base font-medium px-4 py-2 rounded-full transform hover:scale-110 transition-transform">Docker</span>
+                             <span class="bg-cyan-100 text-cyan-800 text-base font-medium px-4 py-2 rounded-full transform hover:scale-110 transition-transform">Kubernetes</span>
+                            <span class="bg-purple-100 text-purple-800 text-base font-medium px-4 py-2 rounded-full transform hover:scale-110 transition-transform">GIS</span>
+                            <span class="bg-teal-100 text-teal-800 text-base font-medium px-4 py-2 rounded-full transform hover:scale-110 transition-transform">Remote Sensing</span>
+                            <span class="bg-pink-100 text-pink-800 text-base font-medium px-4 py-2 rounded-full transform hover:scale-110 transition-transform">Git</span>
+                            <span class="bg-lime-100 text-lime-800 text-base font-medium px-4 py-2 rounded-full transform hover:scale-110 transition-transform">MLflow</span>
                         </div>
                     </div>
                 </div>
             </section>
             
             <!-- Personal Interests Section -->
-            <section id="hobbies" class="py-16 md:py-24 bg-white rounded-2xl shadow-sm border border-gray-200">
+            <section id="hobbies" class="py-16 md:py-24 rounded-2xl shadow-sm animate-slide-up" style="background-color: var(--card-bg); border: 1px solid var(--border-color);">
                 <div class="text-center">
                     <h2 class="text-3xl md:text-4xl font-bold">Beyond the Code</h2>
-                    <p class="mt-4 text-lg text-gray-600">When I'm not building AI models, here's what I'm passionate about.</p>
+                    <p class="mt-4 text-lg" style="color: var(--text-secondary);">When I'm not building AI models, here's what I'm passionate about.</p>
                 </div>
                 <div class="mt-12 max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
                     <div class="flex flex-col items-center">
@@ -304,38 +587,39 @@
     </main>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-white border-t border-gray-200 mt-16">
+    <footer id="contact" class="mt-16" style="background-color: var(--card-bg); border-top: 1px solid var(--border-color);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="text-center">
                 <h2 class="text-3xl font-bold">Get In Touch</h2>
-                <p class="mt-4 max-w-xl mx-auto text-lg text-gray-600">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Feel free to reach out.</p>
+                <p class="mt-4 max-w-xl mx-auto text-lg" style="color: var(--text-secondary);">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Feel free to reach out.</p>
                 <a href="mailto:kathanmehta007@gmail.com" class="mt-8 inline-block bg-indigo-600 text-white font-semibold px-8 py-4 rounded-lg shadow-md hover:bg-indigo-700 transition-colors duration-300 text-lg">Say Hello</a>
             </div>
             <div class="mt-12 flex justify-center space-x-6">
-                <a href="https://www.linkedin.com/in/mehta-kathan/" target="_blank" class="text-gray-400 hover:text-gray-500">
+                <a href="https://www.linkedin.com/in/mehta-kathan/" target="_blank" class="hover:text-indigo-600 transition-colors transform hover:scale-110" style="color: var(--text-secondary);">
                     <span class="sr-only">LinkedIn</span>
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
                 </a>
-                <a href="https://github.com/kathanmehta007" target="_blank" class="text-gray-400 hover:text-gray-500">
+                <a href="https://github.com/kathanmehta007" target="_blank" class="hover:text-indigo-600 transition-colors transform hover:scale-110" style="color: var(--text-secondary);">
                     <span class="sr-only">GitHub</span>
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
                 </a>
-                 <a href="https://x.com/kathanmehta" target="_blank" class="text-gray-400 hover:text-gray-500">
+                 <a href="https://x.com/kathanmehta" target="_blank" class="hover:text-indigo-600 transition-colors transform hover:scale-110" style="color: var(--text-secondary);">
                     <span class="sr-only">X</span>
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
                 </a>
-                <a href="https://www.instagram.com/kathanmehta007/" target="_blank" class="text-gray-400 hover:text-gray-500">
+                <a href="https://www.instagram.com/kathanmehta007/" target="_blank" class="hover:text-indigo-600 transition-colors transform hover:scale-110" style="color: var(--text-secondary);">
                     <span class="sr-only">Instagram</span>
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.645-.07-4.85s.012-3.584.07-4.85c.148-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072c-4.358.2-6.78 2.618-6.98 6.98C.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98C23.986 15.667 24 15.259 24 12s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z" clip-rule="evenodd"></path></svg>
                 </a>
             </div>
-             <div class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-500">
+             <div class="mt-12 pt-8 text-center" style="border-top: 1px solid var(--border-color); color: var(--text-secondary);">
                 <p>&copy; 2024 Kathan Nilesh Mehta. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
     
     <script>
+        // Mobile menu functionality
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -358,6 +642,94 @@
                     });
                 }
             });
+        });
+        
+        // Dark mode functionality
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+        
+        // Initialize theme on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            // Typing animation for hero text
+            const typingText = document.getElementById('typing-text');
+            const text = 'AI, Space, and Technology';
+            typingText.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < text.length) {
+                    typingText.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                } else {
+                    typingText.classList.remove('typing-animation');
+                }
+            }
+            
+            setTimeout(typeWriter, 1000);
+            
+            // Animate skill bars when they come into view
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const skillProgress = entry.target.querySelector('.skill-progress');
+                        if (skillProgress) {
+                            const width = skillProgress.getAttribute('data-width');
+                            setTimeout(() => {
+                                skillProgress.style.width = width + '%';
+                            }, 300);
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all skill items
+            document.querySelectorAll('.skill-item').forEach(item => {
+                observer.observe(item);
+            });
+            
+            // Add scroll animations
+            const scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe elements for scroll animations
+            document.querySelectorAll('.animate-slide-up').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(50px)';
+                el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                scrollObserver.observe(el);
+            });
+        });
+        
+        // Add parallax effect to floating image
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.animate-float');
+            if (parallax) {
+                const speed = scrolled * 0.5;
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
         });
     </script>
 
